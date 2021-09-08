@@ -1,0 +1,97 @@
+<!doctype html>
+<title>Ageing Sign Detection</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+    .img{
+    height:150px;
+    }
+</style>
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"><p> </p></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+        <img src="https://www.verzeo.com/v3/images/nav/logo.png"alt="Verzeo" class="img-thumbnail">
+
+
+    </div>
+  </div>
+</nav>
+ <!-- Background image -->
+  <div
+    class="p-5 text-center bg-image"
+    style="
+      background-image: url('https://media.istockphoto.com/photos/portrait-of-multiethnic-group-picture-id181890482?k=6&m=181890482&s=612x612&w=0&h=gJmlV57oyQw3pxcTmObzYzX84LviDVd5869entcd2ow=');
+      height: 300px;
+    "
+  >
+    <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+      <div class="d-flex justify-content-center align-items-center h-100">
+        <div class="text-white">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Background image -->
+<div class="col-sm-8 text-left">
+      <h1 class="display-1">AGING SIGN DETECTION PROJECT</h1>
+      <h3><strong>A Web Portal to classify & localize different signs of ageing
+         such as puffy eyes, wrinkles, dark circle etc. on the face.
+          This project takes an image as the input and gives you an image with wrinkles,dark circles and puffy eyes located.
+          The input image is shown on the right side and the results at the bottom of the page.</strong></h3>
+      <hr>
+      <h1 class="display-1">Steps</h1>
+      <h4><strong> 1.Choose a file to upload your image</strong>
+      </h4>
+       <h4><strong>2.Click Predict</strong></h4>
+
+    </div>
+
+
+<form method="post" action="/" enctype="multipart/form-data">
+    <div class="upload">
+        <label> Upload your image</label>
+
+        <input class="upload" type=file name=image>
+
+    </div>
+    <div class="predict">
+        <label> Prediction</label>
+        <input type="submit" value="Predict">
+
+    </div>
+
+
+
+	<br>
+	{% if image_loc %}
+	<img class="mb-4" src="static/uploads/{{image_loc}}" alt="" width="250" height="250">
+	{%endif%}
+	<br>
+	<h1>Prediction:</h1>
+	<h3>1. {{wrinkle}}</h3>
+	<h3>2. {{puffed_eye}}</h3>
+	<h3>3. {{dark_spots}}</h3>
+	{% if output_image %}
+	<img class="mb-4" src="static/downloads/{{output_image}}" alt="" width="250" height="250">
+	{%endif%}
+
+	{% if p_face %}
+	<img class="mb-4" src="static/downloads/{{p_face}}" alt="" width="250" height="250">
+	{%endif%}
+	{% if d_circle %}
+	<img class="mb-4" src="static/downloads/{{d_circle}}" alt="" width="250" height="250">
+	{%endif%}
+</form>
+
